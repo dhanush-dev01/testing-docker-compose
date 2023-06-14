@@ -3,24 +3,19 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - 5000:5000
     volumes:
       - ./backend:/app
     depends_on:
-      - database
+      - frontend
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
     volumes:
       - ./frontend:/app
-
-  database:
-    image: mongo
-    ports:
-      - 27017:27017
