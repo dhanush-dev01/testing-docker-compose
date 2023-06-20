@@ -8,8 +8,6 @@ services:
       - 5000:5000
     volumes:
       - ./backend:/app
-    depends_on:
-      - frontend
 
   frontend:
     build:
@@ -19,3 +17,15 @@ services:
       - 3000:3000
     volumes:
       - ./frontend:/app
+
+  mongodb1:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
